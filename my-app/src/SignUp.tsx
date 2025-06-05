@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   return (
     <div className="relative flex min-h-screen flex-col bg-white overflow-x-hidden" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
       <div className="flex flex-col h-full justify-center items-center">
@@ -21,7 +21,17 @@ const SignIn: React.FC = () => {
         </header>
         
         <div className="flex flex-col items-center justify-center py-5 w-full max-w-md">
-          <h2 className="text-[#111518] text-[28px] font-bold leading-tight text-center pb-3 pt-5">Welcome Back</h2>
+          <h2 className="text-[#111518] text-[28px] font-bold leading-tight text-center pb-3 pt-5">Create your account</h2>
+          
+          <div className="flex flex-col w-full px-4 py-3">
+            <label className="flex flex-col">
+              <p className="text-[#111518] text-base font-medium leading-normal pb-2">Full Name</p>
+              <input
+                placeholder="Full Name"
+                className="form-input w-full h-14 rounded-xl border border-[#dbe1e6] bg-white text-[#111518] placeholder:text-[#60768a] p-[15px] text-base font-normal leading-normal focus:outline-0 focus:ring-0 focus:border-[#dbe1e6]"
+              />
+            </label>
+          </div>
           
           <div className="flex flex-col w-full px-4 py-3">
             <label className="flex flex-col">
@@ -45,15 +55,15 @@ const SignIn: React.FC = () => {
           
           <div className="flex px-4 py-3">
             <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center rounded-full h-10 px-4 flex-1 bg-[#0b80ee] text-white text-sm font-bold leading-normal tracking-[0.015em]">
-              <span className="truncate">Sign In</span>
+              <span className="truncate">Sign Up</span>
             </button>
           </div>
           
-          <p className="text-[#60768a] text-sm font-normal leading-normal pb-3 pt-1 text-center">Don't have an account? <a href="/signup" className="underline">Sign Up</a></p>
+          <p className="text-[#60768a] text-sm font-normal leading-normal pb-3 pt-1 text-center">Already have an account? <a href="/signin" className="underline">Sign In</a></p>
         </div>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default SignUp;
