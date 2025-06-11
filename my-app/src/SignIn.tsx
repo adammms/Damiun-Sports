@@ -1,6 +1,29 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn: React.FC = () => {
+  const [email,setEmail] = useState ('syukran@gmail.com')
+  const [password,setPassword] = useState ('syukran123')
+
+  const navigate = useNavigate();
+const signin = async ()=> {
+  
+  const respons = await axios.post(
+    'https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login', 
+    {
+      email,
+      password
+    })
+    const token=respons.data.data.token
+
+    window.sessionStorage.setItem("token", token);
+
+    navigate('/');
+
+
+}
+
   return (
     <div className="relative flex min-h-screen flex-col bg-white overflow-x-hidden" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
       <div className="flex flex-col h-full justify-center items-center">
@@ -28,6 +51,8 @@ const SignIn: React.FC = () => {
               <p className="text-[#111518] text-base font-medium leading-normal pb-2">Email</p>
               <input
                 placeholder="Email"
+                onChange={(event)=> setEmail(event.target.value)}
+                value={email}
                 className="form-input w-full h-14 rounded-xl border border-[#dbe1e6] bg-white text-[#111518] placeholder:text-[#60768a] p-[15px] text-base font-normal leading-normal focus:outline-0 focus:ring-0 focus:border-[#dbe1e6]"
               />
             </label>
@@ -38,13 +63,17 @@ const SignIn: React.FC = () => {
               <p className="text-[#111518] text-base font-medium leading-normal pb-2">Password</p>
               <input
                 placeholder="Password"
+                onChange={(event)=> setPassword(event.target.value)}
+                value={password}
                 className="form-input w-full h-14 rounded-xl border border-[#dbe1e6] bg-white text-[#111518] placeholder:text-[#60768a] p-[15px] text-base font-normal leading-normal focus:outline-0 focus:ring-0 focus:border-[#dbe1e6]"
               />
             </label>
           </div>
           
           <div className="flex px-4 py-3">
-            <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center rounded-full h-10 px-4 flex-1 bg-[#0b80ee] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+            <button
+            onClick={signin}
+            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center rounded-full h-10 px-4 flex-1 bg-[#0b80ee] text-white text-sm font-bold leading-normal tracking-[0.015em]">
               <span className="truncate">Sign In</span>
             </button>
           </div>
