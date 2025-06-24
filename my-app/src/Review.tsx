@@ -1,23 +1,48 @@
 import React from "react";
-import Reviews from "./Review"; // Pastikan path ini sesuai dengan lokasi file Reviews
 
-const DetailSport: React.FC = () => {
+const Reviews: React.FC = () => {
+  const reviews = [
+    {
+      name: "Andi",
+      date: "Juni 20, 2025",
+      rating: 5,
+      comment: "Tempat yang sangat bagus untuk berolahraga! Fasilitasnya lengkap dan bersih.",
+    },
+    {
+      name: "Budi",
+      date: "Juni 18, 2025",
+      rating: 4,
+      comment: "Suka dengan suasana di sini, tetapi parkirnya agak sulit.",
+    },
+    {
+      name: "Cindy",
+      date: "Juni 15, 2025",
+      rating: 5,
+      comment: "Gelora Bung Karno adalah tempat favorit saya untuk berolahraga. Sangat direkomendasikan!",
+    },
+    {
+      name: "Dewi",
+      date: "Juni 10, 2025",
+      rating: 3,
+      comment: "Fasilitasnya baik, tetapi kadang-kadang terlalu ramai.",
+    },
+  ];
+
   return (
-    <div className="relative flex min-h-screen flex-col bg-gray-50 overflow-x-hidden font-['Lexend','Noto_Sans',sans-serif]">
-      {/* ... kode lainnya ... */}
-      <div className="pb-3">
-        <div className="flex border-b border-[#d4dce2] px-4 gap-8">
-          {/* ... tab lainnya ... */}
-          <a className="flex flex-col items-center justify-center border-b-[3px] border-b-[#b2d0e5] text-[#101518] pb-[13px] pt-4" href="#">
-            <p className="text-[#101518] text-sm font-bold leading-normal tracking-[0.015em]">Reviews</p>
-          </a>
-          {/* ... tab lainnya ... */}
-        </div>
+    <div className="p-4">
+      <h2 className="text-[#101518] text-[22px] font-bold leading-tight tracking-[-0.015em]">Reviews</h2>
+      <div className="space-y-4">
+        {reviews.map((review, index) => (
+          <div key={index} className="border border-[#d4dce2] p-4 rounded-lg">
+            <h3 className="text-[#101518] font-bold">{review.name}</h3>
+            <p className="text-[#5c778a] text-sm">{review.date}</p>
+            <p className="text-[#101518]">Rating: {review.rating} ⭐</p>
+            <p className="text-[#101518]">{review.comment}</p>
+          </div>
+        ))}
       </div>
-      <Reviews /> {/* Menampilkan komponen Reviews */}
-      {/* ... kode lainnya ... */}
     </div>
   );
 };
 
-export default DetailSport;
+export default Reviews;
